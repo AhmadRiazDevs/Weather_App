@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="premium.css">
+</head>
+<body>
+    <div class="center">
+        <div class="card">
+            <img src="images.jpg" alt="logo" id="logo">
+            <div class="name">
+                <h1>Weather App</h1>
+            </div>
+            <input type="text" id="Input" placeholder="Enter city name...">
+            <button id="Btn">Get Weather</button>
+            
+            <div id="historySection" style="margin-top: 12px; display: none;">
+                <div id="historyList" style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 6px;"></div>
+                <button id="clearHistoryBtn" style="width: 60%; margin: 0 auto; display: block; font-size: 11px;">Clear History</button>
+            </div>
+            
+            <div id="weatherResult"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
