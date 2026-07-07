@@ -1,0 +1,811 @@
+/* ════════════════════════════════════════════════════════════════════
+   PREMIUM SAAS WEATHER APP - AWARD-WINNING DESIGN
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────── 
+   1. CSS VARIABLES - Premium Color System
+   ─────────────────────────────────────────────────────────────────── */
+:root {
+    /* Deep Navy Background - Premium Foundation */
+    --bg-dark-0: #050812;
+    --bg-dark-1: #0a0e1a;
+    --bg-dark-2: #111627;
+    --bg-dark-3: #1a1f35;
+    
+    /* Accent Gradients - Luxury Feel */
+    --accent-blue: #4f46e5;
+    --accent-cyan: #06b6d4;
+    --accent-purple: #8b5cf6;
+    --accent-indigo: #6366f1;
+    
+    /* Premium Gradients */
+    --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+    --gradient-secondary: linear-gradient(135deg, #8b5cf6 0%, #4f46e5 100%);
+    --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    
+    /* Text Hierarchy */
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    --text-quaternary: #64748b;
+    
+    /* Glass Morphism Palette */
+    --glass-light: rgba(255, 255, 255, 0.08);
+    --glass-medium: rgba(255, 255, 255, 0.12);
+    --glass-strong: rgba(255, 255, 255, 0.16);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    
+    /* Shadows - Premium Depth */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.25);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 30px rgba(79, 70, 229, 0.15);
+    
+    /* Transitions */
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --duration-fast: 200ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   2. GLOBAL RESET & TYPOGRAPHY
+   ─────────────────────────────────────────────────────────────────── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Premium Dark Background with Animated Gradient */
+    background: linear-gradient(
+        -45deg,
+        var(--bg-dark-0) 0%,
+        var(--bg-dark-1) 25%,
+        var(--bg-dark-2) 50%,
+        var(--bg-dark-3) 75%,
+        var(--bg-dark-0) 100%
+    );
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    animation: premiumGradient 15s ease infinite;
+    
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+@keyframes premiumGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--glass-light);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-secondary);
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   3. CONTAINER & LAYOUT
+   ─────────────────────────────────────────────────────────────────── */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 32px 20px;
+    gap: 24px;
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   4. MAIN CARD - PREMIUM GLASSMORPHISM
+   ─────────────────────────────────────────────────────────────────── */
+.card {
+    /* Glassmorphism with Multiple Layers */
+    background: linear-gradient(
+        135deg,
+        var(--glass-medium) 0%,
+        var(--glass-light) 100%
+    );
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    
+    /* Premium Borders */
+    border: 1px solid var(--glass-border);
+    box-shadow: 
+        0 0 1px rgba(255, 255, 255, 0.3),
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    /* Layout */
+    padding: 40px 32px;
+    border-radius: 28px;
+    width: 100%;
+    max-width: 500px;
+    
+    /* Animation */
+    animation: slideInUp 0.8s var(--ease-spring) 0s both;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle Background Glow */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
+    animation: float 20s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, -20px); }
+}
+
+.card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   5. LOGO - PREMIUM PRESENTATION
+   ─────────────────────────────────────────────────────────────────── */
+#logo {
+    width: 110px;
+    height: 110px;
+    border-radius: 28px;
+    display: block;
+    margin: 0 auto 24px;
+    
+    /* Premium Shadow with Glow */
+    box-shadow: 
+        0 0 20px rgba(79, 70, 229, 0.4),
+        var(--shadow-lg);
+    
+    transition: all var(--duration-normal) var(--ease-smooth);
+    filter: drop-shadow(0 8px 24px rgba(79, 70, 229, 0.2));
+    
+    object-fit: cover;
+}
+
+#logo:hover {
+    transform: translateY(-8px) scale(1.02);
+    filter: drop-shadow(0 12px 36px rgba(79, 70, 229, 0.4));
+    box-shadow: 
+        0 0 30px rgba(6, 182, 212, 0.5),
+        var(--shadow-xl);
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   6. TYPOGRAPHY - VISUAL HIERARCHY
+   ─────────────────────────────────────────────────────────────────── */
+.card h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    text-align: center;
+    margin: 16px 0 8px;
+    color: var(--text-primary);
+    
+    /* Subtle Text Gradient */
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   7. INPUT FIELD - PREMIUM INTERACTION
+   ─────────────────────────────────────────────────────────────────── */
+#Input {
+    width: 100%;
+    padding: 16px 18px;
+    margin-top: 28px;
+    
+    /* Glass Background */
+    background: var(--glass-light);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Premium Border */
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    
+    /* Text Styling */
+    color: var(--text-primary);
+    font-size: 15px;
+    font-family: inherit;
+    font-weight: 500;
+    
+    /* Transitions */
+    transition: all var(--duration-normal) var(--ease-smooth);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#Input::placeholder {
+    color: var(--text-quaternary);
+    font-weight: 400;
+}
+
+/* Focus State - Premium Animation */
+#Input:focus {
+    outline: none;
+    background: var(--glass-medium);
+    border-color: var(--accent-cyan);
+    
+    /* Glowing Focus Effect */
+    box-shadow: 
+        inset 0 2px 8px rgba(0, 0, 0, 0.1),
+        0 0 0 3px rgba(6, 182, 212, 0.15),
+        0 0 20px rgba(6, 182, 212, 0.2);
+    
+    transform: translateY(-2px);
+}
+
+#Input:hover:not(:focus) {
+    border-color: var(--accent-indigo);
+    background: rgba(79, 70, 229, 0.05);
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   8. BUTTON - PREMIUM CTA
+   ─────────────────────────────────────────────────────────────────── */
+#Btn {
+    width: 100%;
+    padding: 16px 20px;
+    margin-top: 18px;
+    
+    /* Premium Gradient Background */
+    background: var(--gradient-primary);
+    color: var(--text-primary);
+    
+    /* Typography */
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-family: inherit;
+    
+    /* Border & Shadow */
+    border: none;
+    border-radius: 14px;
+    box-shadow: 
+        0 4px 20px rgba(79, 70, 229, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    
+    /* Cursor & Interaction */
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button Shine Effect */
+#Btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+#Btn:hover::after {
+    left: 100%;
+}
+
+#Btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 32px rgba(79, 70, 229, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+#Btn:active {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 2px 12px rgba(79, 70, 229, 0.4),
+        inset 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   9. HISTORY SECTION
+   ─────────────────────────────────────────────────────────────────── */
+#historySection {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--glass-border);
+    animation: fadeIn var(--duration-normal) var(--ease-smooth);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   10. HISTORY ITEMS - PREMIUM TAGS
+   ─────────────────────────────────────────────────────────────────── */
+.history-item {
+    padding: 9px 16px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    
+    /* Premium Gradient */
+    background: var(--gradient-accent);
+    color: var(--text-primary);
+    
+    /* Typography */
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    font-family: inherit;
+    
+    /* Border & Shadow */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 
+        0 4px 12px rgba(6, 182, 212, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    
+    /* Interaction */
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-spring);
+    display: inline-block;
+    position: relative;
+}
+
+.history-item:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 8px 24px rgba(6, 182, 212, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.history-item:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   11. CLEAR BUTTON - DESTRUCTIVE ACTION
+   ─────────────────────────────────────────────────────────────────── */
+#clearHistoryBtn {
+    width: 100%;
+    padding: 11px 14px;
+    margin-top: 12px;
+    
+    /* Glass Background */
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+    
+    /* Typography */
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    font-family: inherit;
+    
+    /* Border */
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: 10px;
+    
+    /* Effects */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+#clearHistoryBtn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #fecaca;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.15);
+}
+
+#clearHistoryBtn:active {
+    transform: scale(0.98);
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   12. WEATHER RESULT CARD
+   ─────────────────────────────────────────────────────────────────── */
+.weather-card {
+    /* Premium Glassmorphism */
+    background: linear-gradient(135deg, var(--glass-light) 0%, rgba(79, 70, 229, 0.05) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    
+    /* Border */
+    border: 1px solid var(--glass-border);
+    box-shadow: 
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    /* Layout */
+    padding: 32px 24px;
+    border-radius: 24px;
+    margin-top: 24px;
+    text-align: center;
+    
+    /* Animation */
+    animation: slideInUp 0.6s var(--ease-spring) 0.1s both;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle Gradient Background */
+.weather-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.weather-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   13. WEATHER CARD TYPOGRAPHY
+   ─────────────────────────────────────────────────────────────────── */
+.weather-card h4 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.weather-card .temperature {
+    font-size: 52px;
+    font-weight: 800;
+    margin: 16px 0;
+    letter-spacing: -2px;
+    
+    /* Premium Gradient Text */
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.weather-card .description {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 12px 0;
+    opacity: 0.9;
+}
+
+.weather-card p {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   14. WEATHER DETAILS GRID
+   ─────────────────────────────────────────────────────────────────── */
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.detail {
+    /* Glass Background */
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(79, 70, 229, 0.04) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Border */
+    border: 1px solid rgba(79, 70, 229, 0.15);
+    border-radius: 14px;
+    
+    /* Layout */
+    padding: 14px;
+    transition: all var(--duration-normal) var(--ease-smooth);
+    cursor: default;
+}
+
+.detail:hover {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(79, 70, 229, 0.08) 100%);
+    border-color: var(--accent-cyan);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
+}
+
+.detail span {
+    display: block;
+    color: var(--text-tertiary);
+    font-size: 12px;
+    margin-bottom: 6px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.detail span:last-child {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 0;
+    letter-spacing: -0.3px;
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   15. LOCATION INFO
+   ─────────────────────────────────────────────────────────────────── */
+.location {
+    /* Premium Glass */
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(79, 70, 229, 0.05) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Border */
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    border-radius: 14px;
+    
+    /* Layout */
+    padding: 14px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+.location span {
+    color: var(--accent-cyan);
+    font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   16. ERROR MESSAGES - PREMIUM FEEDBACK
+   ─────────────────────────────────────────────────────────────────── */
+#weatherResult p {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.08) 100%) !important;
+    color: #fca5a5 !important;
+    border: 1px solid rgba(239, 68, 68, 0.25) !important;
+    padding: 16px !important;
+    margin: 18px 0 !important;
+    border-radius: 14px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    
+    animation: errorShake 0.4s var(--ease-smooth);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.1);
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   17. LOADING & SUCCESS STATES
+   ─────────────────────────────────────────────────────────────────── */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   18. RESPONSIVE DESIGN - MOBILE FIRST
+   ─────────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .card {
+        padding: 28px 20px;
+        border-radius: 24px;
+    }
+    
+    .card h1 {
+        font-size: 28px;
+        margin-bottom: 4px;
+    }
+    
+    #logo {
+        width: 95px;
+        height: 95px;
+        margin-bottom: 18px;
+    }
+    
+    #Input, #Btn {
+        font-size: 14px;
+        padding: 14px 16px;
+        border-radius: 12px;
+    }
+    
+    .weather-card {
+        padding: 24px 16px;
+        border-radius: 20px;
+    }
+    
+    .weather-card h4 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+    
+    .weather-card .temperature {
+        font-size: 44px;
+    }
+    
+    .weather-details {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .center {
+        padding: 16px 12px;
+        min-height: auto;
+    }
+    
+    .card {
+        padding: 24px 16px;
+        border-radius: 20px;
+        max-width: 100%;
+    }
+    
+    .card h1 {
+        font-size: 24px;
+        margin-top: 8px;
+        margin-bottom: 4px;
+    }
+    
+    #logo {
+        width: 85px;
+        height: 85px;
+        margin-bottom: 14px;
+    }
+    
+    #Input {
+        padding: 12px 14px;
+        font-size: 13px;
+        border-radius: 11px;
+        margin-top: 20px;
+    }
+    
+    #Btn {
+        padding: 13px 16px;
+        font-size: 15px;
+        border-radius: 11px;
+        margin-top: 14px;
+    }
+    
+    .weather-card {
+        padding: 18px 14px;
+        border-radius: 18px;
+        margin-top: 18px;
+    }
+    
+    .weather-card h4 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+    
+    .weather-card .temperature {
+        font-size: 36px;
+        margin: 10px 0;
+    }
+    
+    .detail {
+        padding: 12px;
+        border-radius: 11px;
+    }
+    
+    .detail span {
+        font-size: 11px;
+        margin-bottom: 4px;
+    }
+    
+    .detail span:last-child {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    .card {
+        padding: 20px 14px;
+    }
+    
+    .card h1 {
+        font-size: 22px;
+    }
+    
+    #logo {
+        width: 75px;
+        height: 75px;
+        margin-bottom: 12px;
+    }
+    
+    .weather-card .temperature {
+        font-size: 32px;
+    }
+    
+    .history-item {
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────────── 
+   19. PRINT & ACCESSIBILITY
+   ─────────────────────────────────────────────────────────────────── */
+@media print {
+    body { background: white; }
+    .card { background: white; border: 1px solid #e0e0e0; }
+    #Btn { background: #4f46e5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    /* Already dark by default */
+}
+
+/* ─────────────────────────────────────────────────────════════════════ */
